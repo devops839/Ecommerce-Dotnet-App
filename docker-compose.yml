@@ -1,0 +1,71 @@
+version: '3.8'
+
+services:
+  frontend:
+    image: frontend-service:latest
+    build:
+      context: ./Frontend
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+    networks:
+      - ecommercesolution_ecommerce
+    depends_on:
+      - product-catalog-service
+      - order-service
+      - cart-service
+      - payment-service
+      - user-service
+  product-catalog-service:
+    image: ecommercesolution-product-catalog-service:latest
+    build:
+      context: .
+      dockerfile: ProductCatalogService/Dockerfile
+    ports:
+      - "5002:8080"
+    networks:
+      - ecommercesolution_ecommerce
+
+  order-service:
+    image: ecommercesolution-order-service:latest
+    build:
+      context: .
+      dockerfile: OrderService/Dockerfile
+    ports:
+      - "5003:8080"
+    networks:
+      - ecommercesolution_ecommerce
+
+  cart-service:
+    image: ecommercesolution-cart-service:latest
+    build:
+      context: .
+      dockerfile: CartService/Dockerfile
+    ports:
+      - "5005:8080"
+    networks:
+      - ecommercesolution_ecommerce
+
+  payment-service:
+    image: ecommercesolution-payment-service:latest
+    build:
+      context: .
+      dockerfile: PaymentService/Dockerfile
+    ports:
+      - "5004:8080"
+    networks:
+      - ecommercesolution_ecommerce
+
+  user-service:
+    image: ecommercesolution-user-service:latest
+    build:
+      context: .
+      dockerfile: UserService/Dockerfile
+    ports:
+      - "5001:8080"
+    networks:
+      - ecommercesolution_ecommerce
+
+networks:
+  ecommercesolution_ecommerce:
+    driver: bridge
