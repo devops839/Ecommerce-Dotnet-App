@@ -3,37 +3,193 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to Our E-Commerce Platform</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Our E-Commerce Platform</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #007bff;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        header h1 {
+            font-size: 2.5rem;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+        }
+        .service-card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 15px;
+            width: 250px;
+            text-align: center;
+            padding: 20px;
+            transition: transform 0.3s;
+        }
+        .service-card:hover {
+            transform: scale(1.05);
+        }
+        .service-card h3 {
+            color: #007bff;
+        }
+        .service-card a {
+            display: block;
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .service-card a:hover {
+            background-color: #0056b3;
+        }
+        footer {
+            background-color: #343a40;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+        .product-details {
+            display: none;
+            margin: 10px;
+            width: 200px;
+            text-align: center;
+        }
+        .product-details img {
+            width: 150px;
+            height: auto;
+        }
+        .add-to-cart {
+            padding: 12px 20px;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+        .cart-items {
+            list-style: none;
+            padding: 0;
+            margin: 20px;
+        }
+        .cart-items li {
+            margin: 10px 0;
+            display: flex;
+            align-items: center;
+        }
+        .cart-items img {
+            width: 50px;
+            height: 50px;
+            margin-right: 10px;
+        }
+        .cart-items button {
+            margin-left: auto;
+        }
+        #payment-section {
+            display: none;
+            padding: 20px;
+            background-color: white;
+            margin-top: 20px;
+        }
+        .product-summary img {
+            width: 100px;
+            height: 100px;
+            margin-right: 15px;
+        }
+    </style>
 </head>
 <body>
     <header>
-        <h1>Welcome to Our E-Commerce Platform</h1>
+        <h1>Our E-Commerce Platform</h1>
+        <p>Explore a variety of products, manage orders, and make payments securely.</p>
     </header>
 
-    <section class="services">
-        <h2>Our Services</h2>
-        <ul>
-            <li><a href="http://localhost:5002/api/product" target="_blank">Product Catalog</a></li>
-            <li><a href="http://localhost:5003/api/order" target="_blank">Order Service</a></li>
-            <li><a href="http://localhost:5005/api/cart" target="_blank">Cart Service</a></li>
-            <li><a href="http://localhost:5004/api/payment" target="_blank">Payment Service</a></li>
-            <li><a href="http://localhost:5001/api/user" target="_blank">User Service</a></li>
-        </ul>
-    </section>
+    <div class="container">
+        <!-- Product Catalog -->
+        <div class="service-card">
+            <h3>Product Catalog</h3>
+            <p>View Products</p>
+            <a href="#" id="product-link">Explore</a>
+            <div class="product-details" id="iphone-details">
+                <h4>iPhone 16 Pro</h4>
+                <img src="https://www.apple.com/newsroom/images/2024/09/apple-debuts-iphone-16-pro-and-iphone-16-pro-max/tile/Apple-iPhone-16-Pro-hero-240909-lp.jpg.news_app_ed.jpg" alt="iPhone 16 Pro">
+                <p>Price: $999</p>
+                <button class="add-to-cart" data-product="iPhone 16 Pro" data-price="999" data-image="https://www.apple.com/newsroom/images/2024/09/apple-debuts-iphone-16-pro-and-iphone-16-pro-max/tile/Apple-iPhone-16-Pro-hero-240909-lp.jpg.news_app_ed.jpg">Add to Cart</button>
+            </div>
+            <div class="product-details" id="macbook-details">
+                <h4>MacBook Pro M4</h4>
+                <img src="https://www.apple.com/newsroom/images/2024/10/new-macbook-pro/article/Apple-MacBook-Pro-M4-lineup_big.jpg.large.jpg" alt="MacBook Pro">
+                <p>Price: $2499</p>
+                <button class="add-to-cart" data-product="MacBook Pro M4" data-price="2499" data-image="https://www.apple.com/newsroom/images/2024/10/new-macbook-pro/article/Apple-MacBook-Pro-M4-lineup_big.jpg.large.jpg">Add to Cart</button>
+            </div>
+            <div class="product-details" id="watch-details">
+                <h4>Apple Watch</h4>
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRa08mHYnY5RFJ8b6HidV5UzWh-marsgSYyAA&s" alt="Apple Watch">
+                <p>Price: $120</p>
+                <button class="add-to-cart" data-product="Apple Watch" data-price="120" data-image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRa08mHYnY5RFJ8b6HidV5UzWh-marsgSYyAA&s">Add to Cart</button>
+            </div>
+            <div class="product-details" id="airpods-details">
+                <h4>AirPods Pro 2nd Gen</h4>
+                <img src="https://www.apple.com/newsroom/images/product/airpods/standard/Apple-AirPods-Pro-2nd-gen-hero-220907.jpg.og.jpg?202410300041" alt="AirPods Pro">
+                <p>Price: $249</p>
+                <button class="add-to-cart" data-product="AirPods Pro 2nd Gen" data-price="249" data-image="https://www.apple.com/newsroom/images/product/airpods/standard/Apple-AirPods-Pro-2nd-gen-hero-220907.jpg.og.jpg?202410300041">Add to Cart</button>
+            </div>
+        </div>
 
-    <section class="description">
-        <h3>Service Descriptions</h3>
-        <p><strong>Product Catalog</strong> - View our product catalog and explore various products.</p>
-        <p><strong>Order Service</strong> - Place and manage your orders here.</p>
-        <p><strong>Cart Service</strong> - Add products to your cart and view your items.</p>
-        <p><strong>Payment Service</strong> - Proceed with your payments and checkout.</p>
-        <p><strong>User Service</strong> - Manage your user profile and preferences here.</p>
-    </section>
+        <!-- Other Services -->
+        <div class="service-card">
+            <h3>Order Service</h3>
+            <p>Manage your orders and track their status easily.</p>
+            <a href="#" id="order-link">Track Orders</a>
+        </div>
+
+        <div class="service-card">
+            <h3>Cart Service</h3>
+            <p>Add and view items in your cart.</p>
+            <a href="#" id="cart-link">View Cart</a>
+        </div>
+
+        <div class="service-card">
+            <h3>Payment Service</h3>
+            <p>Proceed with your secure payment transactions.</p>
+            <a href="#" id="payment-link">Make Payment</a>
+        </div>
+
+        <div class="service-card">
+            <h3>User Service</h3>
+            <p>Manage your profile and preferences.</p>
+            <a href="#" id="user-link">Manage Account</a>
+        </div>
+    </div>
+
+    <div id="cart-section" style="display: none;">
+        <ul class="cart-items" id="cart-items"></ul>
+        <button id="proceed-to-checkout">Proceed to Checkout</button>
+    </div>
+
+    <div id="payment-section">
+        <h3>Payment Details</h3>
+        <div id="product-summary"></div>
+        <button id="payment-successful">Payment Successful</button>
+    </div>
 
     <footer>
-        <p>© 2024 E-Commerce Platform</p>
+        <p>&copy; 2024 E-Commerce Platform for Apple</p>
     </footer>
 
+    <script src="script.js"></script>
 </body>
 </html>
