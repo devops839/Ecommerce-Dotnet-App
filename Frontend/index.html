@@ -109,6 +109,44 @@
             height: 100px;
             margin-right: 15px;
         }
+        .loading-indicator {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+            color: white;
+        }
+        #payment-total {
+            margin-top: 20px;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .quantity-controls button {
+            padding: 5px 10px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            width: 30px;
+            height: 30px;
+        }
+        .quantity-controls button:hover {
+            background-color: #0056b3;
+        }
+        .quantity-controls span {
+            font-size: 16px;
+            margin: 0 5px;
+        }
     </style>
 </head>
 <body>
@@ -148,7 +186,7 @@
                 <button class="add-to-cart" data-product="AirPods Pro 2nd Gen" data-price="249" data-image="https://www.apple.com/newsroom/images/product/airpods/standard/Apple-AirPods-Pro-2nd-gen-hero-220907.jpg.og.jpg?202410300041">Add to Cart</button>
             </div>
         </div>
-
+        
         <!-- Other Services -->
         <div class="service-card">
             <h3>Order Service</h3>
@@ -183,11 +221,31 @@
     <div id="payment-section">
         <h3>Payment Details</h3>
         <div id="product-summary"></div>
-        <button id="payment-successful">Payment Successful</button>
+        <div id="payment-total">Total: $0.00</div>
+        <button id="buy-now">Buy Now</button>
+        <div class="loading-indicator" id="loading-indicator">
+            <p>Processing your Payment...</p>
+        </div>
+    </div>
+
+    <div id="order-history" style="display: none;">
+        <h3>Order History</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Order ID</th>
+                    <th>Date</th>
+                    <th>Items</th>
+                    <th>Total</th>
+                    <th>Invoice</th>
+                </tr>
+            </thead>
+            <tbody id="order-history-list"></tbody>
+        </table>
     </div>
 
     <footer>
-        <p>&copy; 2024 E-Commerce Platform for Apple</p>
+        <p>&copy; 2024 E-Commerce Platform. All Rights Reserved.</p>
     </footer>
 
     <script src="script.js"></script>
