@@ -147,9 +147,124 @@
             font-size: 16px;
             margin: 0 5px;
         }
+        @media (max-width: 768px) {
+            .service-card {
+                width: 90%;
+            }
+        }
     </style>
 </head>
 <body>
+    <body>
+
+        <header>
+            <h1>Welcome to the Product and Service Store</h1>
+            <nav>
+                <a href="#" id="cart-link">Cart</a> |
+                <a href="#" id="order-link">Order History</a> |
+                <a href="#" id="product-link">Explore Products</a> |
+                <a href="#" id="service-link">Explore Services</a> |
+                <a href="#" id="manage-account-btn">Manage Account</a>
+            </nav>
+        </header>
+    
+        <!-- Product Section -->
+        <section id="product-section">
+            <h2>Our Products</h2>
+            <div id="iphone" class="product">
+                <h3>iPhone</h3>
+                <button class="explore-details" id="iphone-details-btn">Explore</button>
+                <div id="iphone-details" style="display:none;">
+                    <p>Details about iPhone...</p>
+                    <button class="add-to-cart" data-product="iPhone" data-price="999.99" data-image="iphone.jpg">Add to Cart</button>
+                </div>
+            </div>
+            <div id="macbook" class="product">
+                <h3>MacBook</h3>
+                <button class="explore-details" id="macbook-details-btn">Explore</button>
+                <div id="macbook-details" style="display:none;">
+                    <p>Details about MacBook...</p>
+                    <button class="add-to-cart" data-product="MacBook" data-price="1299.99" data-image="macbook.jpg">Add to Cart</button>
+                </div>
+            </div>
+            <div id="watch" class="product">
+                <h3>Apple Watch</h3>
+                <button class="explore-details" id="watch-details-btn">Explore</button>
+                <div id="watch-details" style="display:none;">
+                    <p>Details about Apple Watch...</p>
+                    <button class="add-to-cart" data-product="Apple Watch" data-price="399.99" data-image="watch.jpg">Add to Cart</button>
+                </div>
+            </div>
+            <div id="airpods" class="product">
+                <h3>AirPods</h3>
+                <button class="explore-details" id="airpods-details-btn">Explore</button>
+                <div id="airpods-details" style="display:none;">
+                    <p>Details about AirPods...</p>
+                    <button class="add-to-cart" data-product="AirPods" data-price="199.99" data-image="airpods.jpg">Add to Cart</button>
+                </div>
+            </div>
+        </section>
+    
+        <!-- Services Section -->
+        <section id="service-section">
+            <h2>Our Services</h2>
+            <div id="payment-service" class="service">
+                <h3>Payment Service</h3>
+                <button id="payment-service-btn">Explore</button>
+                <div id="payment-service-details" style="display:none;">
+                    <p>Details about Payment Service...</p>
+                    <button class="add-to-cart" data-product="Payment Service" data-price="49.99" data-image="payment-service.jpg">Add to Cart</button>
+                </div>
+            </div>
+            <div id="user-service" class="service">
+                <h3>User Service</h3>
+                <button id="user-service-btn">Explore</button>
+                <div id="user-service-details" style="display:none;">
+                    <p>Manage your profile and preferences.</p>
+                    <button class="add-to-cart" data-product="User Service" data-price="99.99" data-image="user-service.jpg">Add to Cart</button>
+                </div>
+            </div>
+        </section>
+    
+        <!-- Cart Section -->
+        <section id="cart-section">
+            <h2>Your Cart</h2>
+            <ul id="cart-items"></ul>
+            <p id="payment-total">Total: $0.00</p>
+            <button id="proceed-to-checkout">Proceed to Checkout</button>
+        </section>
+    
+        <!-- Payment Section -->
+        <section id="payment-section">
+            <h2>Payment</h2>
+            <div id="payment-items"></div>
+            <p id="payment-total"></p>
+            <button id="buy-now">Buy Now</button>
+            <div id="loading-indicator" style="display:none;">Processing...</div>
+        </section>
+    
+        <!-- Order History Section -->
+        <section id="order-history">
+            <h2>Order History</h2>
+            <table id="order-history-list"></table>
+        </section>
+    
+        <!-- Manage Account Section -->
+        <section id="manage-account-form">
+            <h2>Manage Account</h2>
+            <form id="create-user-form">
+                <label for="username">Username: </label>
+                <input type="text" id="username" required>
+                <label for="email">Email: </label>
+                <input type="email" id="email" required>
+                <button type="submit">Create User</button>
+            </form>
+            <div id="user-info"></div>
+        </section>
+    
+        <script src="script.js"></script>
+    </body>
+    </html>
     <header>
         <h1>Our E-Commerce Platform</h1>
         <p>Explore a variety of products, manage orders, and make payments securely.</p>
@@ -186,7 +301,7 @@
                 <button class="add-to-cart" data-product="AirPods Pro 2nd Gen" data-price="249" data-image="https://www.apple.com/newsroom/images/product/airpods/standard/Apple-AirPods-Pro-2nd-gen-hero-220907.jpg.og.jpg?202410300041">Add to Cart</button>
             </div>
         </div>
-        
+
         <!-- Other Services -->
         <div class="service-card">
             <h3>Order Service</h3>
@@ -218,7 +333,7 @@
         <button id="proceed-to-checkout">Proceed to Checkout</button>
     </div>
 
-    <div id="payment-section">
+    <div id="payment-section" style="display: none;">
         <h3>Payment Details</h3>
         <div id="product-summary"></div>
         <div id="payment-total">Total: $0.00</div>

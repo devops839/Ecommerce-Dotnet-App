@@ -35,7 +35,7 @@ let orderHistory = JSON.parse(localStorage.getItem('orderHistory')) || [];
 // Add item to cart and update cart UI
 function addToCart(product, price, image) {
     const existingItem = cart.find(item => item.product === product);
-    
+
     if (existingItem) {
         existingItem.quantity += 1; // Increase the quantity of the existing product
     } else {
@@ -44,7 +44,7 @@ function addToCart(product, price, image) {
 
     // Save the cart to localStorage
     localStorage.setItem('cart', JSON.stringify(cart));
-    
+
     updateCartDisplay(); // Update cart UI after adding item
 }
 
@@ -52,11 +52,11 @@ function addToCart(product, price, image) {
 function updateCartDisplay() {
     const cartItems = document.getElementById('cart-items');
     cartItems.innerHTML = ''; // Clear the cart display
-    
+
     cart.forEach(item => {
         const cartItem = document.createElement('li');
         cartItem.classList.add('cart-item');
-        
+
         cartItem.innerHTML = `
             <img src="${item.image}" alt="${item.product}" />
             <span>${item.product} x ${item.quantity}</span>
@@ -122,16 +122,16 @@ document.getElementById('proceed-to-checkout').addEventListener('click', functio
 function displayPaymentDetails() {
     const paymentItems = document.getElementById('payment-items');
     paymentItems.innerHTML = ''; // Clear the payment details
-    
+
     cart.forEach(item => {
         const paymentItem = document.createElement('div');
         paymentItem.classList.add('payment-item');
-        
+
         paymentItem.innerHTML = `
             <img src="${item.image}" alt="${item.product}" />
             <span>${item.product} - $${item.price} x ${item.quantity}</span>
         `;
-        
+
         paymentItems.appendChild(paymentItem);
     });
 
@@ -201,14 +201,24 @@ function displayOrderHistory() {
     } else {
         orderHistory.forEach(order => {
             const row = document.createElement('tr');
-            row.innerHTML = `
-                <td>${order.orderId}</td>
-                <td>${order.date}</td>
-                <td>${order.items}</td>
-                <td>${order.total}</td>
-                <td><button onclick="viewInvoice('${order.orderId}')">View Invoice</button></td>
-            `;
-            orderHistoryList.appendChild(row);
+
+            // Check if any property is undefined or invalid, and avoid displaying it
+            const orderId = order.orderId ? order.orderId : '';
+            const date = order.date ? order.date : '';
+            const items = order.items ? order.items : '';
+            const total = order.total ? order.total : '';
+
+            // Only create the row if all values are valid
+            if (orderId && date && items && total) {
+                row.innerHTML = `
+                    <td>${orderId}</td>
+                    <td>${date}</td>
+                    <td>${items}</td>
+                    <td>${total}</td>
+                    <td><button onclick="viewInvoice('${orderId}')">View Invoice</button></td>
+                `;
+                orderHistoryList.appendChild(row);
+            }
         });
     }
 }
